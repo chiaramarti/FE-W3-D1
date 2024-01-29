@@ -5,7 +5,7 @@
 
 // first
 const newStr = (str1, str2) => {
-  return str1.substring(0, 2) + str2.substring(str2.length - 3, str2.length);
+  return (str1.substring(0, 2) + str2.substring(str2.length - 3, str2.length)).toUpperCase();
 }
 
 const conc1 = newStr('cane', 'gatto')
@@ -13,7 +13,7 @@ console.log(conc1)
 
 
 // second
-const newStr2 = (str1, str2) =>  str1.substring(0, 2) + str2.substring(str2.length - 3 , str2.length);
+const newStr2 = (str1, str2) =>  (str1.substring(0, 2) + str2.substring(str2.length - 3 , str2.length)).toUpperCase();
 console.log(newStr2('giraffa', 'elefante'))
 console.log(newStr2('micio', 'bau'))
 
@@ -32,11 +32,7 @@ console.log(randomNum)
 /* ESERCIZIO 3 (filter)
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
-const even = randomNum.filter(evenNum);
-
-function evenNum(n){
-  return n % 2 === 0;
-}
+const even = randomNum.filter(evenNum = (n) => n % 2 === 0)
 
 console.log(even)
 
@@ -55,11 +51,14 @@ console.log('forEach > ', sum)
 /* ESERCIZIO 5 (reduce)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
-let sum2 = randomNum.reduce(randomTotal, 0);
+// let sum2 = randomNum.reduce(randomTotal, 0);
 
+/* 
 function randomTotal(total, num){
   return total + num;
 }
+*/
+const sum2 = randomNum.reduce((total, num) => total + num, 0);
 
 console.log('reduce > ', sum2)
 /* ESERCIZIO 6 (map)
@@ -76,10 +75,27 @@ console.log(newArr)
   Scrivi una funzione che, dato un array di stringhe, ritorni un nuovo array contenente le lunghezze delle rispettive stringhe dell'array di partenza
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
 */
+const stringArray = ['epicode', 'is', 'great']
+
+let countStrings = stringArray.map (function(stringa) {
+  return stringa.length;
+});
+
+console.log(countStrings)
 
 /* ESERCIZIO 8 (forEach o for)
   Scrivi una funzione per creare un array contenente tutti i valori DISPARI da 1 a 99.
 */
+
+const Num = [];
+
+for (let i = 1; i < 100; i++) {
+  if ( i % 2 !== 0 ) {
+    Num.push(i)
+  }
+}
+
+console.log(Num)
 
 /* Questo array di film verrà usato negli esercizi a seguire. Non modificarlo e scorri oltre per riprendere gli esercizi :) */
 const movies = [
@@ -221,6 +237,14 @@ const movies = [
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
 
+const result = movies.find(({ imdbID }) => imdbID === 'tt4154796')
+
+console.log(result.Title)
+
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+
+const index = movies.findIndex(({ Year }) => Year === '2015')
+
+console.log(index)
