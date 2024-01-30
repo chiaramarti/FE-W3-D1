@@ -20,19 +20,22 @@ console.log(newStr2('micio', 'bau'))
 /* ESERCIZIO 2 (for)
   Scrivi una funzione che torni un array di 10 elementi; ognuno di essi deve essere un valore random compreso tra 0 e 100 (incluso).
 */
-const randomNum = [];
-function 
+
+
+function randomNum() {
+  const randomNum = [];
 for (let i = 0; i < 10; i++) {
   randomNum.push(Math.floor(Math.random() * 101)) ;
 }
-
-console.log(randomNum)
+return randomNum;
+}
+console.log(randomNum())
 
 
 /* ESERCIZIO 3 (filter)
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
-const even = randomNum.filter(evenNum = (n) => n % 2 === 0)
+const even = randomNum().filter(evenNum = (n) => n % 2 === 0)
 
 console.log(even)
 
@@ -41,7 +44,7 @@ console.log(even)
 */
 let sum = 0;
 
-randomNum.forEach(randomSum);
+randomNum().forEach(randomSum);
 
 function randomSum(n) {
   sum += n;
@@ -58,13 +61,13 @@ function randomTotal(total, num){
   return total + num;
 }
 */
-const sum2 = randomNum.reduce((total, num) => total + num, 0);
+const sum2 = randomNum().reduce((total, num) => total + num, 0);
 
 console.log('reduce > ', sum2)
 /* ESERCIZIO 6 (map)
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
-const newArr = randomNum.map(incremento = (x) => {
+const newArr = randomNum().map(incremento = (x) => {
   let n = 10;
   return x + n;
 })
