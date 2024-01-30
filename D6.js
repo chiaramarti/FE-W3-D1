@@ -286,11 +286,24 @@ const getMovieById = (arr, id) => {
   return arr.find(movie => movie.imdbID === id)
 }
 
-getMovieById(movies, 'tt0087365')
-const getMovie = (arr, id) => arr.find(movie => movie.imdbID === id)
-/*const getMovie = (arr, id) => (typeof id === 'string' && id.length >= 9 && id.startsWith('tt') */ arr.find(movie => movie.imdbID === id)
+console.log(getMovieById(movies, 'tt0087365'))
 
-console.log(getMovie(movies, 'tt4154796'))
+const getMovie = (arr, id) => arr.find(movie => movie.imdbID === id)
+/*const getMovie = (arr, id) => (typeof id === 'string' && id.length >= 9 && id.startsWith('tt') ? arr.find(movie => movie.imdbID === id)*/
+const getMovieId = (arr, id) => {
+  if (typeof id == 'string' && id.length >= 9 && id.startsWith('tt')) {
+    const isFound = arr.find(movie => movie.imbID === id);
+    if (isFound) {
+      return isFound;
+    } else {
+      return 'id non trovato'
+    }
+  } else {
+    return 'id non valido'
+  }
+}
+
+console.log(getMovieId(movies, 'tt4154796'))
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
@@ -298,4 +311,13 @@ console.log(getMovie(movies, 'tt4154796'))
 
 const index = movies.findIndex(({ Year }) => Year === '2015')
 
+const getMovieByYear = (arr, year) =>{
+  if (typeof year === 'number' && !isNaN(year)) {
+    return arr.findIndex(movie => parseInt(movie.Year) === year);
+  } else {
+    return -1;
+  }
+};
+const indexFound = (getMovieByYear(movies, 2005))
+console.log(indexFound != -1 ? movies[indexFound] : 'non abbiamo trovato un film per questo anno')
 console.log(index)
